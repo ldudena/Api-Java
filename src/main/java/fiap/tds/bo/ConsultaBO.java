@@ -44,4 +44,15 @@ public class ConsultaBO {
         }
         dao.atualizarProntuario(idConsulta, texto);
     }
+
+    public void cadastrarConsulta(Consulta consulta) throws SQLException {
+        dao.cadastrar(consulta);
+    }
+
+    public void salvarRecomendacao(int idConsulta, String texto) throws RegraNegocioException, SQLException {
+        if (texto == null || texto.trim().isEmpty()) {
+            throw new RegraNegocioException("A recomendação não pode estar vazia.");
+        }
+        dao.atualizarRecomendacao(idConsulta, texto);
+    }
 }
