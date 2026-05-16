@@ -5,6 +5,7 @@ import fiap.tds.tdbentities.Endereco;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import java.sql.SQLException;
 
 @Path("/enderecos")
@@ -23,6 +24,16 @@ public class EnderecoResource {
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Erro ao salvar endereço no banco: " + e.getMessage()).build();
+        }
+    }
+
+    @GET
+    public Response listarEnderecos() {
+        try {
+            fiap.tds.dao.EnderecoDAO dao = new fiap.tds.dao.EnderecoDAO();
+            return Response.ok(dao.listar()).build(); // Partindo do princípio que o seu DAO tem o método listar()
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
         }
     }
 }
