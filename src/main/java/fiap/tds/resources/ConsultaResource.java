@@ -1,6 +1,7 @@
 package fiap.tds.resources;
 
 import fiap.tds.bo.ConsultaBO;
+import fiap.tds.tdbentities.Consulta;
 import fiap.tds.exceptions.RegraNegocioException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

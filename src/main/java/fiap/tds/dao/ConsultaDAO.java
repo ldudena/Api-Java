@@ -22,8 +22,8 @@ public class ConsultaDAO {
                     Consulta c = new Consulta();
                     c.setIdConsulta(rs.getInt("id_consulta"));
                     c.setDsProntuario(rs.getString("ds_prontuario"));
-                    if(rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
-                    if(rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
+                    if (rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
+                    if (rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
                     c.setIdBeneficiario(rs.getInt("id_beneficiario"));
                     c.setIdDentista(rs.getInt("id_dentista"));
                     c.setIdEndereco(rs.getInt("id_endereco"));
@@ -50,8 +50,8 @@ public class ConsultaDAO {
                     Consulta c = new Consulta();
                     c.setIdConsulta(rs.getInt("id_consulta"));
                     c.setDsProntuario(rs.getString("ds_prontuario"));
-                    if(rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
-                    if(rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
+                    if (rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
+                    if (rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
                     c.setIdBeneficiario(rs.getInt("id_beneficiario"));
                     c.setIdDentista(rs.getInt("id_dentista"));
                     c.setIdEndereco(rs.getInt("id_endereco"));
@@ -80,8 +80,8 @@ public class ConsultaDAO {
                     Consulta c = new Consulta();
                     c.setIdConsulta(rs.getInt("id_consulta"));
                     c.setDsProntuario(rs.getString("ds_prontuario"));
-                    if(rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
-                    if(rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
+                    if (rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
+                    if (rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
                     c.setIdBeneficiario(rs.getInt("id_beneficiario"));
                     c.setIdDentista(rs.getInt("id_dentista"));
                     c.setIdEndereco(rs.getInt("id_endereco"));
@@ -112,8 +112,8 @@ public class ConsultaDAO {
                     Consulta c = new Consulta();
                     c.setIdConsulta(rs.getInt("id_consulta"));
                     c.setDsProntuario(rs.getString("ds_prontuario"));
-                    if(rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
-                    if(rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
+                    if (rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
+                    if (rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
                     c.setIdBeneficiario(rs.getInt("id_beneficiario"));
                     c.setIdDentista(rs.getInt("id_dentista"));
                     c.setIdEndereco(rs.getInt("id_endereco"));
@@ -171,8 +171,8 @@ public class ConsultaDAO {
                 Consulta c = new Consulta();
                 c.setIdConsulta(rs.getInt("id_consulta"));
                 c.setDsProntuario(rs.getString("ds_prontuario"));
-                if(rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
-                if(rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
+                if (rs.getDate("dt_consulta") != null) c.setDtConsulta(rs.getDate("dt_consulta").toLocalDate());
+                if (rs.getTime("hr_consulta") != null) c.setHrConsulta(rs.getTime("hr_consulta").toLocalTime());
                 c.setIdBeneficiario(rs.getInt("id_beneficiario"));
                 c.setIdDentista(rs.getInt("id_dentista"));
                 c.setIdEndereco(rs.getInt("id_endereco"));
