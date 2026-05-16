@@ -10,7 +10,6 @@ public class Triagem {
     private LocalTime hrInicial;
     private LocalTime hrFinal;
     private int idEndereco;
-    private int vagas;
     private String nmLocal;
 
     private String nmLogradouro;
@@ -22,12 +21,12 @@ public class Triagem {
     }
 
 
-    public Triagem(LocalDate dtTriagem, LocalTime hrInicial, LocalTime hrFinal, int idEndereco, int vagas) {
+    public Triagem(LocalDate dtTriagem, LocalTime hrInicial, LocalTime hrFinal, int idEndereco) {
         this.dtTriagem = dtTriagem;
         this.hrInicial = hrInicial;
         this.hrFinal = hrFinal;
         this.idEndereco = idEndereco;
-        this.vagas = vagas;
+
     }
 
 
@@ -71,13 +70,6 @@ public class Triagem {
         this.idEndereco = idEndereco;
     }
 
-    public int getVagas() {
-        return vagas;
-    }
-
-    public void setVagas(int vagas) {
-        this.vagas = vagas;
-    }
 
     public String getNmLocal() {
         return nmLocal;

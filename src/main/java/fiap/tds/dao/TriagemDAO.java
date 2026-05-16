@@ -15,8 +15,8 @@ public class TriagemDAO {
     public List<Triagem> listarProximas() throws SQLException {
         List<Triagem> lista = new ArrayList<>();
 
-        // Adicionadas as colunas de endereço reais no SELECT (e.nm_logradouro, e.nr_logradouro, etc.)
-        String sql = "SELECT t.id_triagem, t.dt_triagem, t.hr_inicial, t.hr_final, t.id_endereco, t.vagas, " +
+
+        String sql = "SELECT t.id_triagem, t.dt_triagem, t.hr_inicial, t.hr_final, t.id_endereco, " +
                 "e.nm_local, e.nm_logradouro, e.nr_logradouro, e.nm_bairro, e.nm_cidade " +
                 "FROM T_BC_TRIAGEM t " +
                 "LEFT JOIN T_BC_ENDERECO e ON t.id_endereco = e.id_endereco " +
@@ -43,14 +43,13 @@ public class TriagemDAO {
                 }
 
                 t.setIdEndereco(rs.getInt("id_endereco"));
-                t.setVagas(rs.getInt("vagas"));
                 t.setNmLocal(rs.getString("nm_local"));
-
-                // POPULANDO OS CAMPOS DO ENDEREÇO DA TRIAGEM PARA O REACT CONSEGUIR LER
                 t.setNmLogradouro(rs.getString("nm_logradouro"));
                 t.setNrLogradouro(rs.getInt("nr_logradouro"));
                 t.setNmBairro(rs.getString("nm_bairro"));
                 t.setNmCidade(rs.getString("nm_cidade"));
+
+
 
                 lista.add(t);
             }
