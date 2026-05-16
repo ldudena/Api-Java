@@ -178,14 +178,50 @@ public class PreBeneficiarioDAO {
     }
 
     public void excluir(int id) throws SQLException {
-        String sql = "DELETE FROM T_BC_PRE_BENEFICIARIO WHERE id_pre_beneficiario = ?";
 
-        try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        String sqlDeleteRelTriagem = "DELETE FROM T_BC_REL_TRIAGEM_PRE_BENEF WHERE id_pre_beneficiario = ?";
 
-            ps.setInt(1, id);
-            ps.executeUpdate();
+
+        String sqlDeleteBeneficiario = "DELETE FROM T_BC_BENEFICIARIO WHERE id_pre_beneficiario = ?";
+
+
+        String sqlDeletePreBeneficiario = "DELETE FROM T_BC_PRE_BENEFICIARIO WHERE id_pre_beneficiario = ?";
+
+        Connection conn = null;
+        try {
+            conn = DatabaseConfig.getConnection();
+
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement psRel = conn.prepareStatement(sqlDeleteRelTriagem)) {
+                psRel.setInt(1, id);
+                psRel.executeUpdate();
+            }
+
+            try (PreparedStatement psBen = conn.prepareStatement(sqlDeleteBeneficiario)) {
+                psBen.setInt(1, id);
+                psBen.executeUpdate();
+            }
+
+            try (PreparedStatement psPre = conn.prepareStatement(sqlDeletePreBeneficiario)) {
+                psPre.setInt(1, id);
+                psPre.executeUpdate();
+            }
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            if (conn != null) {
+                conn.rollback();
+            }
+            throw e;
+        } finally {
+            if (conn != null) {
+                conn.setAutoCommit(true);
+                conn.close();
+            }
         }
+
     }
 }
 
