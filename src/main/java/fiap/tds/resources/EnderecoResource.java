@@ -27,6 +27,18 @@ public class EnderecoResource {
         }
     }
 
+    @PUT
+    @Path("/{id}")
+    public Response atualizarEndereco(@PathParam("id") int id, fiap.tds.tdbentities.Endereco endereco) {
+        try {
+            endereco.setIdEndereco(id);
+            bo.atualizar(endereco);
+            return Response.ok("Endereço atualizado com sucesso!").build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
     @GET
     public Response listarEnderecos() {
         try {

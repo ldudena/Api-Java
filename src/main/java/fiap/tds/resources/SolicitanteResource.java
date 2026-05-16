@@ -36,6 +36,18 @@ public class SolicitanteResource {
         }
     }
 
+    @PUT
+    @Path("/{id}")
+    public Response atualizarSolicitante(@PathParam("id") int id, Solicitante solicitante) {
+        try {
+            solicitante.setIdSolicitante(id);
+            bo.atualizar(solicitante);
+            return Response.ok("Contatos atualizados com sucesso!").build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
     @DELETE
     @Path("/{id}")
     public Response deletarSolicitante(@PathParam("id") int id) {

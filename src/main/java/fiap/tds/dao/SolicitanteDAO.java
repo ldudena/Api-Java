@@ -59,4 +59,15 @@ public class SolicitanteDAO {
             ps.executeUpdate();
         }
     }
+
+    public void atualizar(Solicitante s) throws SQLException {
+        String sql = "UPDATE T_BC_SOLICITANTE SET nr_telefone = ?, email = ? WHERE id_solicitante = ?";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, s.getNrTelefone());
+            ps.setString(2, s.getEmail());
+            ps.setInt(3, s.getIdSolicitante());
+            ps.executeUpdate();
+        }
+    }
 }

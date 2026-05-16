@@ -26,4 +26,9 @@ public class EnderecoBO {
     public List<Endereco> listar() throws SQLException {
         return dao.listar();
     }
+
+    public void atualizar(Endereco endereco) throws SQLException {
+        dao.atualizar(endereco);
+    }
+
 }

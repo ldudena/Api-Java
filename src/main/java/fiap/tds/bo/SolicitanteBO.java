@@ -23,4 +23,8 @@ public class SolicitanteBO {
     public void excluir(int id) throws SQLException {
         dao.excluir(id);
     }
+
+    public void atualizar(Solicitante solicitante) throws SQLException {
+        dao.atualizar(solicitante);
+    }
 }
