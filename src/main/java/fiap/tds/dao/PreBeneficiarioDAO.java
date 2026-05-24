@@ -82,17 +82,22 @@ public class PreBeneficiarioDAO {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                PreBeneficiario pb = new PreBeneficiario(
-                        rs.getInt("id_pre_beneficiario"),
-                        rs.getString("nm_pre_beneficiario"),
-                        rs.getString("cpf_pre_beneficiario"),
-                        rs.getString("sx_pre_beneficiario"),
-                        rs.getString("ds_problema_dentario"),
-                        rs.getString("st_situacao"),
-                        rs.getInt("id_programa_social"),
-                        rs.getInt("id_solicitante"),
-                        rs.getInt("id_endereco")
-                );
+                PreBeneficiario pb = new PreBeneficiario();
+
+                pb.setIdPreBeneficiario(rs.getInt("id_pre_beneficiario"));
+                pb.setNmPreBeneficiario(rs.getString("nm_pre_beneficiario"));
+                pb.setCpfPreBeneficiario(rs.getString("cpf_pre_beneficiario"));
+                pb.setSxPreBeneficiario(rs.getString("sx_pre_beneficiario"));
+                pb.setDsProblemaDentario(rs.getString("ds_problema_dentario"));
+                pb.setStSituacao(rs.getString("st_situacao"));
+                pb.setIdProgramaSocial(rs.getInt("id_programa_social"));
+                pb.setIdSolicitante(rs.getInt("id_solicitante"));
+                pb.setIdEndereco(rs.getInt("id_endereco"));
+
+                java.sql.Date dataBanco = rs.getDate("dt_nascimento");
+                if (dataBanco != null) {
+                    pb.setDtNascimento(dataBanco.toString());
+                }
                 preBeneficiarios.add(pb);
             }
         }
