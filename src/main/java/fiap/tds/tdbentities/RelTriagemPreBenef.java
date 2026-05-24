@@ -2,8 +2,8 @@ package fiap.tds.tdbentities;
 
 public class RelTriagemPreBenef {
 
-    private int idTriagem; // FK
-    private int idPreBeneficiario; // FK
+    private int idTriagem;
+    private int idPreBeneficiario;
 
 
     public RelTriagemPreBenef() {}

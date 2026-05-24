@@ -27,6 +27,15 @@ public class EnderecoResource {
         }
     }
 
+    @GET
+    public Response listarEnderecos() {
+        try {
+            return Response.ok(bo.listar()).build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
     @PUT
     @Path("/{id}")
     public Response atualizarEndereco(@PathParam("id") int id, fiap.tds.tdbentities.Endereco endereco) {
@@ -34,15 +43,6 @@ public class EnderecoResource {
             endereco.setIdEndereco(id);
             bo.atualizar(endereco);
             return Response.ok("Endereço atualizado com sucesso!").build();
-        } catch (SQLException e) {
-            return Response.status(500).entity(e.getMessage()).build();
-        }
-    }
-
-    @GET
-    public Response listarEnderecos() {
-        try {
-            return Response.ok(bo.listar()).build();
         } catch (SQLException e) {
             return Response.status(500).entity(e.getMessage()).build();
         }

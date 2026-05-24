@@ -9,16 +9,6 @@ import java.util.List;
 
 public class RelTriagemPreBenefDAO {
 
-    public void atualizarTriagem(int idPreBeneficiario, int idNovaTriagem) throws SQLException {
-        String sql = "UPDATE T_BC_REL_TRIAGEM_PRE_BENEF SET id_triagem = ? WHERE id_pre_beneficiario = ?";
-        try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, idNovaTriagem);
-            ps.setInt(2, idPreBeneficiario);
-            ps.executeUpdate();
-        }
-    }
-
     public void cadastrar(RelTriagemPreBenef rel) throws SQLException {
         String sql = "INSERT INTO T_BC_REL_TRIAGEM_PRE_BENEF (id_triagem, id_pre_beneficiario) VALUES (?, ?)";
 
@@ -48,6 +38,16 @@ public class RelTriagemPreBenefDAO {
             }
         }
         return relacoes;
+    }
+
+    public void atualizarTriagem(int idPreBeneficiario, int idNovaTriagem) throws SQLException {
+        String sql = "UPDATE T_BC_REL_TRIAGEM_PRE_BENEF SET id_triagem = ? WHERE id_pre_beneficiario = ?";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, idNovaTriagem);
+            ps.setInt(2, idPreBeneficiario);
+            ps.executeUpdate();
+        }
     }
 
     public void excluir(int idTriagem, int idPreBeneficiario) throws SQLException {

@@ -10,7 +10,6 @@ import java.sql.SQLException;
 @Path("/dentistas")
 @Produces(MediaType.APPLICATION_JSON)
 public class DentistaResource {
-
     private DentistaBO bo = new DentistaBO();
 
     @GET
@@ -25,6 +24,15 @@ public class DentistaResource {
         }
     }
 
+    @GET
+    public Response listarTodos() {
+        try {
+            return Response.ok(bo.listar()).build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
     @PATCH
     @Path("/{id}/status")
     public Response mudarStatus(@PathParam("id") int id, @QueryParam("status") String status) {
@@ -33,15 +41,6 @@ public class DentistaResource {
             return Response.ok("Status do dentista atualizado com sucesso!").build();
         } catch (RegraNegocioException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
-        } catch (SQLException e) {
-            return Response.status(500).entity(e.getMessage()).build();
-        }
-    }
-
-    @GET
-    public Response listarTodos() {
-        try {
-            return Response.ok(bo.listar()).build();
         } catch (SQLException e) {
             return Response.status(500).entity(e.getMessage()).build();
         }

@@ -12,9 +12,38 @@ import java.sql.SQLException;
 @Path("/consultas")
 @Produces(MediaType.APPLICATION_JSON)
 public class ConsultaResource {
-
-
     private ConsultaBO bo = new ConsultaBO();
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response criarConsulta(Consulta consulta) {
+        try {
+            bo.cadastrarConsulta(consulta);
+            return Response.status(Response.Status.CREATED).entity("Consulta agendada com sucesso!").build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Path("/beneficiario/{id}/proximas")
+    public Response proximasBeneficiario(@PathParam("id") int idBeneficiario) {
+        try {
+            return Response.ok(bo.listarProximasBeneficiario(idBeneficiario)).build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Path("/beneficiario/{id}/historico")
+    public Response historicoBeneficiario(@PathParam("id") int idBeneficiario) {
+        try {
+            return Response.ok(bo.listarHistoricoBeneficiario(idBeneficiario)).build();
+        } catch (SQLException e) {
+            return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
 
     @GET
     public Response listarTodas() {
@@ -53,37 +82,6 @@ public class ConsultaResource {
             return Response.ok("Prontuário salvo com sucesso!").build();
         } catch (RegraNegocioException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
-        } catch (SQLException e) {
-            return Response.status(500).entity(e.getMessage()).build();
-        }
-    }
-
-    @GET
-    @Path("/beneficiario/{id}/proximas")
-    public Response proximasBeneficiario(@PathParam("id") int idBeneficiario) {
-        try {
-            return Response.ok(bo.listarProximasBeneficiario(idBeneficiario)).build();
-        } catch (SQLException e) {
-            return Response.status(500).entity(e.getMessage()).build();
-        }
-    }
-
-    @GET
-    @Path("/beneficiario/{id}/historico")
-    public Response historicoBeneficiario(@PathParam("id") int idBeneficiario) {
-        try {
-            return Response.ok(bo.listarHistoricoBeneficiario(idBeneficiario)).build();
-        } catch (SQLException e) {
-            return Response.status(500).entity(e.getMessage()).build();
-        }
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response criarConsulta(Consulta consulta) {
-        try {
-            bo.cadastrarConsulta(consulta);
-            return Response.status(Response.Status.CREATED).entity("Consulta agendada com sucesso!").build();
         } catch (SQLException e) {
             return Response.status(500).entity(e.getMessage()).build();
         }

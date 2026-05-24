@@ -20,16 +20,6 @@ public class Triagem {
     public Triagem() {
     }
 
-
-    public Triagem(LocalDate dtTriagem, LocalTime hrInicial, LocalTime hrFinal, int idEndereco) {
-        this.dtTriagem = dtTriagem;
-        this.hrInicial = hrInicial;
-        this.hrFinal = hrFinal;
-        this.idEndereco = idEndereco;
-
-    }
-
-
     public int getIdTriagem() {
         return idTriagem;
     }

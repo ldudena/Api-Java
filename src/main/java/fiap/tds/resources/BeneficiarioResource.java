@@ -10,8 +10,6 @@ import java.sql.SQLException;
 @Path("/beneficiarios")
 @Produces(MediaType.APPLICATION_JSON)
 public class BeneficiarioResource {
-
-    // Agora chama o BO!
     private BeneficiarioBO bo = new BeneficiarioBO();
 
     @GET

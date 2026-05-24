@@ -10,8 +10,7 @@ import java.util.List;
 public class SolicitanteDAO {
 
     public void cadastrar(Solicitante s) throws SQLException {
-        // Veja que no VALUES, o 4º parâmetro está fixado como 'A'
-        String sql = "INSERT INTO T_BC_SOLICITANTE (nm_solicitante, nm_responsavel, st_libras, st_solicitante, nr_telefone, email) VALUES (?, ?, ?, 'A', ?, ?)";
+       String sql = "INSERT INTO T_BC_SOLICITANTE (nm_solicitante, nm_responsavel, st_libras, st_solicitante, nr_telefone, email) VALUES (?, ?, ?, 'A', ?, ?)";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -28,7 +27,6 @@ public class SolicitanteDAO {
 
     public List<Solicitante> listar() throws SQLException {
         List<Solicitante> lista = new ArrayList<>();
-
         String sql = "SELECT * FROM T_BC_SOLICITANTE WHERE st_solicitante = 'A'";
 
         try (Connection conn = DatabaseConfig.getConnection();
@@ -51,15 +49,6 @@ public class SolicitanteDAO {
         return lista;
     }
 
-    public void excluir(int id) throws SQLException {
-        String sql = "DELETE FROM T_BC_SOLICITANTE WHERE id_solicitante = ?";
-        try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        }
-    }
-
     public void atualizar(Solicitante s) throws SQLException {
         String sql = "UPDATE T_BC_SOLICITANTE SET nr_telefone = ?, email = ? WHERE id_solicitante = ?";
         try (Connection conn = DatabaseConfig.getConnection();
@@ -67,6 +56,15 @@ public class SolicitanteDAO {
             ps.setString(1, s.getNrTelefone());
             ps.setString(2, s.getEmail());
             ps.setInt(3, s.getIdSolicitante());
+            ps.executeUpdate();
+        }
+    }
+
+    public void excluir(int id) throws SQLException {
+        String sql = "DELETE FROM T_BC_SOLICITANTE WHERE id_solicitante = ?";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
             ps.executeUpdate();
         }
     }

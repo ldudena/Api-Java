@@ -20,7 +20,6 @@ public class Consulta {
     public Consulta() {
     }
 
-    // Getters e Setters originais...
     public int getIdConsulta() {
         return idConsulta;
     }

@@ -10,7 +10,6 @@ import java.util.List;
 public class EnderecoDAO {
 
     public int cadastrar(Endereco endereco, Connection conn) throws SQLException {
-
         String sql = "INSERT INTO T_BC_ENDERECO (nm_local, nm_logradouro, nr_logradouro, nm_bairro, nm_cidade, nr_cep) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = conn.prepareStatement(sql, new String[]{"ID_ENDERECO"})) {

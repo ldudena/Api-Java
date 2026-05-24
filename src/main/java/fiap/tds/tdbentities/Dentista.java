@@ -16,7 +16,6 @@ public class Dentista {
     public Dentista() {
     }
 
-    // Construtor COM ID
     public Dentista(int idDentista, String nmDentista, LocalDate dtNascimento, String sxDentista, String cpfDentista, String croDentista, String dsEspecialidade, String stDentista) {
         this.idDentista = idDentista;
         this.nmDentista = nmDentista;
@@ -28,16 +27,6 @@ public class Dentista {
         this.stDentista = stDentista;
     }
 
-    // Construtor SEM ID
-    public Dentista(String nmDentista, LocalDate dtNascimento, String sxDentista, String cpfDentista, String croDentista, String dsEspecialidade, String stDentista) {
-        this.nmDentista = nmDentista;
-        this.dtNascimento = dtNascimento;
-        this.sxDentista = sxDentista;
-        this.cpfDentista = cpfDentista;
-        this.croDentista = croDentista;
-        this.dsEspecialidade = dsEspecialidade;
-        this.stDentista = stDentista;
-    }
 
     public int getIdDentista() { return idDentista; }
     public void setIdDentista(int idDentista) { this.idDentista = idDentista; }

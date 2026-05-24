@@ -13,28 +13,6 @@ public class Solicitante {
     public Solicitante() {
     }
 
-    // Construtor COM ID
-    public Solicitante(int idSolicitante, String nmSolicitante, String nmResponsavel, String stLibras, String st_solicitante, String nrTelefone, String email) {
-        this.idSolicitante = idSolicitante;
-        this.nmSolicitante = nmSolicitante;
-        this.nmResponsavel = nmResponsavel;
-        this.stLibras = stLibras;
-        this.stSolicitante = stSolicitante;
-        this.nrTelefone = nrTelefone;
-        this.email = email;
-    }
-
-    // Construtor SEM ID
-    public Solicitante(String nmSolicitante, String nmResponsavel, String stLibras, String st_solicitante, String nrTelefone, String email) {
-        this.nmSolicitante = nmSolicitante;
-        this.nmResponsavel = nmResponsavel;
-        this.stLibras = stLibras;
-        this.stSolicitante = stSolicitante;
-        this.nrTelefone = nrTelefone;
-        this.email = email;
-    }
-
-    // Getters e Setters
     public int getIdSolicitante() { return idSolicitante; }
     public void setIdSolicitante(int idSolicitante) { this.idSolicitante = idSolicitante; }
 

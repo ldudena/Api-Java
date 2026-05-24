@@ -12,10 +12,20 @@ import java.util.List;
 
 public class TriagemDAO {
 
+    public void cadastrar(Triagem triagem) throws SQLException {
+        String sql = "INSERT INTO T_BC_TRIAGEM (dt_triagem, hr_inicial, hr_final, id_endereco) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setDate(1, java.sql.Date.valueOf(triagem.getDtTriagem()));
+            ps.setTime(2, java.sql.Time.valueOf(triagem.getHrInicial()));
+            ps.setTime(3, java.sql.Time.valueOf(triagem.getHrFinal()));
+            ps.setInt(4, triagem.getIdEndereco());
+            ps.executeUpdate();
+        }
+    }
+
     public List<Triagem> listarProximas() throws SQLException {
         List<Triagem> lista = new ArrayList<>();
-
-
         String sql = "SELECT t.id_triagem, t.dt_triagem, t.hr_inicial, t.hr_final, t.id_endereco, " +
                 "e.nm_local, e.nm_logradouro, e.nr_logradouro, e.nm_bairro, e.nm_cidade " +
                 "FROM T_BC_TRIAGEM t " +
@@ -54,17 +64,5 @@ public class TriagemDAO {
             }
         }
         return lista;
-    }
-
-    public void cadastrar(Triagem triagem) throws SQLException {
-        String sql = "INSERT INTO T_BC_TRIAGEM (dt_triagem, hr_inicial, hr_final, id_endereco) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setDate(1, java.sql.Date.valueOf(triagem.getDtTriagem()));
-            ps.setTime(2, java.sql.Time.valueOf(triagem.getHrInicial()));
-            ps.setTime(3, java.sql.Time.valueOf(triagem.getHrFinal()));
-            ps.setInt(4, triagem.getIdEndereco());
-            ps.executeUpdate();
-        }
     }
 }

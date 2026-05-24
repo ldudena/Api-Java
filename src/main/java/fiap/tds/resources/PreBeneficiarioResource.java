@@ -14,20 +14,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PreBeneficiarioResource {
-
-    // Agora o Resource chama o BO, e não o DAO!
     private PreBeneficiarioBO bo = new PreBeneficiarioBO();
-
-    @GET
-    public Response listarPreBeneficiarios() {
-        try {
-            List<PreBeneficiario> lista = bo.listar();
-            return Response.ok(lista).build();
-        } catch (SQLException e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Erro ao buscar pré-beneficiários: " + e.getMessage()).build();
-        }
-    }
 
     @POST
     public Response criarPreBeneficiario(PreBeneficiario pb) {
@@ -40,6 +27,17 @@ public class PreBeneficiarioResource {
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Erro ao cadastrar pré-beneficiário: " + e.getMessage()).build();
+        }
+    }
+
+    @GET
+    public Response listarPreBeneficiarios() {
+        try {
+            List<PreBeneficiario> lista = bo.listar();
+            return Response.ok(lista).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Erro ao buscar pré-beneficiários: " + e.getMessage()).build();
         }
     }
 

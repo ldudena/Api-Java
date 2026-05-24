@@ -23,14 +23,6 @@ public class Endereco {
         this.nrCep = nrCep;
     }
 
-    public Endereco(String nmLocal, String nmLogradouro, int nrLogradouro, String nmBairro, String nmCidade, String nrCep) {
-        this.nmLocal = nmLocal;
-        this.nmLogradouro = nmLogradouro;
-        this.nrLogradouro = nrLogradouro;
-        this.nmBairro = nmBairro;
-        this.nmCidade = nmCidade;
-        this.nrCep = nrCep;
-    }
 
     public int getIdEndereco() { return idEndereco; }
     public void setIdEndereco(int idEndereco) { this.idEndereco = idEndereco; }

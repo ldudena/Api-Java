@@ -11,19 +11,7 @@ import java.sql.SQLException;
 @Path("/triagens")
 @Produces(MediaType.APPLICATION_JSON)
 public class TriagemResource {
-
     private TriagemBO bo = new TriagemBO();
-
-    @GET
-    @Path("/proximas")
-    public Response listarProximas() {
-        try {
-            return Response.ok(bo.listarProximas()).build();
-        } catch (SQLException e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Erro ao buscar triagens: " + e.getMessage()).build();
-        }
-    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -33,6 +21,17 @@ public class TriagemResource {
             return Response.status(Response.Status.CREATED).entity("Triagem agendada com sucesso!").build();
         } catch (SQLException e) {
             return Response.status(500).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Path("/proximas")
+    public Response listarProximas() {
+        try {
+            return Response.ok(bo.listarProximas()).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Erro ao buscar triagens: " + e.getMessage()).build();
         }
     }
 }

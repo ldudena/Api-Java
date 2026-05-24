@@ -10,15 +10,6 @@ public class Beneficiario {
     public Beneficiario() {
     }
 
-    public Beneficiario(int idBeneficiario, int idPreBeneficiario) {
-        this.idBeneficiario = idBeneficiario;
-        this.idPreBeneficiario = idPreBeneficiario;
-    }
-
-    public Beneficiario(int idPreBeneficiario) {
-        this.idPreBeneficiario = idPreBeneficiario;
-    }
-
     public int getIdBeneficiario() { return idBeneficiario; }
     public void setIdBeneficiario(int idBeneficiario) { this.idBeneficiario = idBeneficiario; }
 

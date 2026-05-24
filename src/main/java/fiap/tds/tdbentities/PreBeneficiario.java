@@ -31,7 +31,6 @@ public class PreBeneficiario {
         this.idEndereco = idEndereco;
     }
 
-
     public int getIdPreBeneficiario() {
         return idPreBeneficiario;
     }

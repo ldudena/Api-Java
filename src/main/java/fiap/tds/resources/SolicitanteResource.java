@@ -12,18 +12,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SolicitanteResource {
-
     private SolicitanteBO bo = new SolicitanteBO();
-
-    @GET
-    public Response listarSolicitantes() {
-        try {
-            return Response.ok(bo.listar()).build();
-        } catch (SQLException e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Erro ao buscar solicitantes: " + e.getMessage()).build();
-        }
-    }
 
     @POST
     public Response criarSolicitante(Solicitante solicitante) {
@@ -33,6 +22,16 @@ public class SolicitanteResource {
         } catch (SQLException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Erro ao cadastrar solicitante: " + e.getMessage()).build();
+        }
+    }
+
+    @GET
+    public Response listarSolicitantes() {
+        try {
+            return Response.ok(bo.listar()).build();
+        } catch (SQLException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Erro ao buscar solicitantes: " + e.getMessage()).build();
         }
     }
 

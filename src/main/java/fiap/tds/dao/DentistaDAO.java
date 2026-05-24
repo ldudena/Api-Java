@@ -9,16 +9,6 @@ import java.util.List;
 
 public class DentistaDAO {
 
-    public void atualizarStatus(int idDentista, String novoStatus) throws SQLException {
-        String sql = "UPDATE T_BC_DENTISTA SET st_dentista = ? WHERE id_dentista = ?";
-        try (Connection conn = DatabaseConfig.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, novoStatus);
-            ps.setInt(2, idDentista);
-            ps.executeUpdate();
-        }
-    }
-
     public void cadastrar(Dentista dentista) throws SQLException {
         String sql = "INSERT INTO T_BC_DENTISTA (nm_dentista, dt_nascimento, sx_dentista, cpf_dentista, cro_dentista, ds_especialidade, st_dentista) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -104,6 +94,16 @@ public class DentistaDAO {
             ps.setString(7, dentista.getStDentista());
             ps.setInt(8, dentista.getIdDentista());
 
+            ps.executeUpdate();
+        }
+    }
+
+    public void atualizarStatus(int idDentista, String novoStatus) throws SQLException {
+        String sql = "UPDATE T_BC_DENTISTA SET st_dentista = ? WHERE id_dentista = ?";
+        try (Connection conn = DatabaseConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, novoStatus);
+            ps.setInt(2, idDentista);
             ps.executeUpdate();
         }
     }

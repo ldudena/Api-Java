@@ -13,7 +13,6 @@ import java.sql.SQLException;
 @Path("/rel-triagem")
 @Produces(MediaType.APPLICATION_JSON)
 public class RelTriagemPreBenefResource {
-
     private RelTriagemPreBenefBO bo = new RelTriagemPreBenefBO();
 
     @PATCH
